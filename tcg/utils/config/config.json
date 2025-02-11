@@ -1,0 +1,45 @@
+{
+  "scope": {
+    "feeds": "https://spreadsheets.google.com/feeds",
+    "api": "https://www.googleapis.com/auth/drive"
+  },
+  "type": "service_account",
+  "project_id": "infra-core-428321-r6",
+  "private_key_id": "d7686cfe73fcc26fd845b0c879ac991cb472c93f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDHVgMvPWG7q2Y4\nla9nddMyfrA1UTz/pHmGRpjKGY3BofEoyK0WWeDIQ2QaQwFDPNlT3haPNX2a3LUl\nWQK9qrI3xN0hTxBVJQxsEVbixdAYTXT1/rHvkfvLj2VnIr97nqxImyisy982qsQW\ngdhlPy+u4v8AAgatyupbsKt1C+YDKePBvWkmw/X7KILsYodr7ILxlFvbchRl9s/l\nM3hcsiE2wSWhjQi++EMC3V+uPSrBTbViGF6fBLOPVBIJUAEHwgNQwDik4uJSbJuG\nsA698qwYdfbDJgMoZinTphWoQKU/bKoLdIQGlFssIOYt0C2EuDhaA/xmiEI8Tdyk\n5tZCzAAzAgMBAAECggEAAg35Z22/CaOpIJEuZycYP699mncVZV8pH4Cvx3l+9A16\nwlxbKF1Ry06ihADHzQ0eAlbKLbyz6Do5JcLmm9TcFGYTj2nUtcP1flGpbxnx3KZD\nu9tdsyXyjfUS6v65MYl/phnvT+SkDtiwv7ij5dtCXw+Y6EOdFQJ/6uUFx2WRf9vU\nhESWvOHzv9+vYf/5DJbQ4LOa+ig66ZCHsLPDTwxq8+1xuFFy8Ez0TpkXijDvqoBD\nUhvGpCD0YnWDnU02DlSMd/lFXQKAOViLMhCFIkbG4sWK//Anor5SYCA3Zr78bT5h\ncG2j7FD6ZJgEmLWUy2NwaQ7xIWzbiq/bNY4sHFz7xQKBgQDmbQdTz0Pk8lgoEbF8\n5Pjiopy9W96Xrqu41Ih9ywRsUVrv8b/xUeFqYEwUpyeJg7MfaK7n6vv+RhpE8xwL\nv4mNPy36CuFL3p+en2isYEInGXoZE0hKqOTp3AEKWHWaJXjgcCsj/2t4+qziGkkV\nzcYOgLWDD+ZHlmzU6Z2uk00BxwKBgQDddaR1bHYpu+fxnhwVfnnMEufS4ys94iPE\n7aFPiB5DQttCF/TJc5KKvC/X5oBdzmaLONqvBIfZs2DO3KoQXQZSoCp3V4wECQRN\nlbd8l7UBeNo5N6vbZxOuFJoLIu1Gg5Ihmh6bWsMMbAoE8AaeEvL/Z3q+LGGQtOMn\naOcgSDBONQKBgDVBn77sGYoRxPRF2pq+JRPkd4uAbzrpgQDwBjfkszoBt53bZvx0\naz/1z7+6PnYW/VBWFo69jc5gD3Q+KA5DD5yYrJys5RNu+b9kooGsob19su2Wuk+f\nJ4ExewAUH+InpP9ijWX9g65raYe8gYXLkGoLr2gCRbvn9XFkKTCPFO5DAoGAbkMC\njQxhkMnj4+Lq7LC6B6dqEQ/WGcucL5J4/FYzax3AeRngYOTQE4866u3y/8GiQLMf\n/n/s+7FaA+TOL7OBUGY6fozyQ5gRsmdWogwOrRr03AQh5u1dWREc2WqcZL1hZqWL\nk6IO9wJbwrWXNeENZ6in7kO+mAPYDWknmmUW1/kCgYB401vMQkvNU4AC+ZKXHcZx\nW0h/IS7oV3aYvvbIEcLmWA53RG3Y3nSD3XCWBy98Sbzy+x8tzKYXT5S2F7Z95041\n5onF4Qt1yT8vINELRuI135Ascq7A/jUI4RbM1P3Igt00YjA0bMwk1voWnzkZF5Oz\n73j+L6mVpWA/eK59SMdnrg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "sincueeh-dev@infra-core-428321-r6.iam.gserviceaccount.com",
+  "client_id": "112511486241094020503",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sincueeh-dev%40infra-core-428321-r6.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com",
+  "sheet": {
+    "source": "My TCG",
+    "worksheet": "Code",
+    "preview": "Preview 2.0",
+    "collect": "Collection",
+    "sale": "For Sale",
+    "cache": "Cache"
+  },
+  "card_type": {
+    "yugi": "Yu-Gi-Oh!",
+    "poke": "Pokemon"
+  },
+  "yugioh": {
+    "collect": "My Yu-Gi-Oh Cards",
+    "sell": "Yu-Gi-Oh Cards for Sale"
+  },
+  "pokemon": {
+    "collect": "My Pokemon Cards",
+    "sell": "Pokemon Cards for Sale"
+  },
+    "action": {
+    "my_collection": "Collect",
+    "sell": "Sell"
+  },
+  "api":{
+    "id": "50ff9288-931c-42a2-9643-79ae3c483f11",
+    "key": "V2-QpD6p-bBjNa-8GIxm-24SOU-aFhFv-T62e2-HC2Q0-rkoGM"
+  }
+}
