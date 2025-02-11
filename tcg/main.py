@@ -1,4 +1,3 @@
-import json
 from tcg.services.search import search_card
 from functions_framework import http
 from flask import jsonify
@@ -10,7 +9,8 @@ def get(req):
         if not data:
             return jsonify(dict(status=400, message='Invalid or missing JSON')), 400
 
-        search_card(category=data.get('category'), key=data.get('code'))
-        return jsonify(dict(status=200, message='Success'))
+        result = search_card(category=data.get('category'), key=data.get('code'))
+        return jsonify(dict(status=result.get('status'), message=result.get('message')))
+
     except Exception as e:
         return jsonify(dict(status=500, message=f'Error {e}')), 500

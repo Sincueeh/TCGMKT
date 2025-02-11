@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-
 from tcg.services.insert import insert_values
 from tcg.services.scrap import html_scrap
 
@@ -19,12 +18,14 @@ def search_card(category, key):
 
         web = requests.get(url_template)
         web.raise_for_status() #HTTP Errors
-
         bp = BeautifulSoup(web.text, 'html.parser')
         df = html_scrap(category, bp)
-        response = insert_values(df)
+        if len(df.values.tolist()) == 0:
+            return dict(status=404,
+                        message='No Results')
 
+        response = insert_values(df)
         return response
     except requests.RequestException as re:
-        return dict(status=404,
+        return dict(status=500,
                     message=f'Unreachable. {re}')

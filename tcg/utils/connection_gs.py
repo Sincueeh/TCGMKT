@@ -2,8 +2,8 @@ import json
 import os
 import google.oauth2.service_account
 import gspread
-from typing import Tuple, Union
-from gspread import Worksheet, Spreadsheet
+from typing import Tuple
+from gspread import Spreadsheet
 
 
 def authenticate_gs(path: str, scope: list[str]) -> gspread.client.Client:
@@ -31,20 +31,6 @@ def get_source(scope: list, credentials_path: str, spreadsheet_name: str) -> dic
     except Exception as e:
         return dict(status=500,
                     message=f'Error getting spreadsheet: {e}')
-
-
-def set_scope() -> set:
-    """
-    Establece el alcance de la autenticación de Google Sheets.
-
-    :return: Un conjunto con los alcances
-    """
-    config_path = set_credentials_path()
-    with open(config_path) as file:
-        config_file = json.load(file)
-
-    scope = {config_file['scope']['feeds'], config_file['scope']['api']}
-    return scope
 
 
 def set_credentials_path() -> str:

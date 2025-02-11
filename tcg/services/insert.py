@@ -1,27 +1,23 @@
 import json
-
 from tcg.utils.connection_gs import set_credentials_path, authenticate_gs
 
 
 def insert_values(df):
-    try:
-        path = set_credentials_path()
-        with open(path) as file:
-            config = json.load(file)
 
-        scope = [config['scope']['feeds'],
-                 config['scope']['api']]
+    path = set_credentials_path()
+    with open(path) as file:
+        config = json.load(file)
 
-        data = [df.columns.tolist()] + df.values.tolist()
+    scope = [config['scope']['feeds'],
+             config['scope']['api']]
 
-        client = authenticate_gs(path, scope)
-        spreadsheet = client.open(config['sheet']['source'])
-        worksheet = spreadsheet.worksheet('Test')
-        worksheet.update('A1', data)
+    data = [df.columns.tolist()] + df.values.tolist()
 
-        return dict(status=200,
-                    message= 'Updated Successfully')
+    client = authenticate_gs(path, scope)
+    spreadsheet = client.open(config['sheet']['source'])
+    worksheet = spreadsheet.worksheet(config['sheet']['preview'])
+    worksheet.update('A1', data)
 
-    except Exception as e:
-        return dict(status=500,
-                    message=f'Failed to insert. {e}')
+    return dict(status=200,
+                message= 'Updated Successfully')
+

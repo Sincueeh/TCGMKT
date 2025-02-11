@@ -1,3 +1,4 @@
+import datetime
 import uuid
 import pandas
 
@@ -36,12 +37,11 @@ def html_scrap(category, html):
             price = txt.get_text(strip=True)
             if price.startswith('$'):
                 prices.append(price.replace('$', ''))
-            else:
-                prices.append('0.00')
 
         length = min(len(names), len(images),
                      len(expansions), len(prices))
         min_list = []
+        fecha_actual = datetime.datetime.now()
         for i in range(length):
             new_uuid = str(uuid.uuid4())
             min_list.append((
@@ -50,16 +50,16 @@ def html_scrap(category, html):
                 expansions[i],
                 prices[i],
                 images[i],
-                category
+                category,
+                fecha_actual.strftime('%Y%m%d')
             ))
 
         df = pandas.DataFrame(min_list, columns=['uuid', 'Card',
                                                  'Expansion', 'Price',
-                                                 'Image', 'Type'])
+                                                 'Image', 'Type', 'Last Updated'])
 
         return df
 
     except Exception as e:
         return dict(status=400,
                     message=f'Unable to retrieve list. {e}')
-
