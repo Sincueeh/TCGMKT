@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from tcg.services.insert import insert_values
+from tcg.services.insert import insert_values, save_cache
 from tcg.services.scrap import html_scrap
 
 
@@ -23,8 +23,8 @@ def search_card(category, key):
         if len(df.values.tolist()) == 0:
             return dict(status=404,
                         message='No Results')
-
         response = insert_values(df)
+        save_cache(category,key,df.to_dict(orient='records'))
         return response
     except requests.RequestException as re:
         return dict(status=500,

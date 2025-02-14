@@ -1,4 +1,3 @@
-import datetime
 import uuid
 import pandas
 
@@ -41,7 +40,6 @@ def html_scrap(category, html):
         length = min(len(names), len(images),
                      len(expansions), len(prices))
         min_list = []
-        fecha_actual = datetime.datetime.now()
         for i in range(length):
             new_uuid = str(uuid.uuid4())
             min_list.append((
@@ -50,13 +48,12 @@ def html_scrap(category, html):
                 expansions[i],
                 prices[i],
                 images[i],
-                category,
-                fecha_actual.strftime('%Y%m%d')
+                category
             ))
 
         df = pandas.DataFrame(min_list, columns=['uuid', 'Card',
                                                  'Expansion', 'Price',
-                                                 'Image', 'Type', 'Last Updated'])
+                                                 'Image', 'Type'])
 
         return df
 
