@@ -1,5 +1,9 @@
+import datetime
+import json
 import uuid
 import pandas
+from tcg.utils.connection_gs import set_sheet
+
 
 def html_scrap(category, html):
     names = []
@@ -60,3 +64,4 @@ def html_scrap(category, html):
     except Exception as e:
         return dict(status=400,
                     message=f'Unable to retrieve list. {e}')
+

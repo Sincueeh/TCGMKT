@@ -2,7 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 from tcg.services.insert import insert_values, save_cache
 from tcg.services.scrap import html_scrap
-
+from tcg.utils.connection_gs import set_sheet
+from typing import Union
 
 def search_card(category, key):
     try:
@@ -29,3 +30,14 @@ def search_card(category, key):
     except requests.RequestException as re:
         return dict(status=500,
                     message=f'Unreachable. {re}')
+
+def search_in_cache(cat, key) -> Union[dict,None]:
+
+    worksheet = set_sheet(1)
+    records = worksheet.get_all_records()
+
+    for idx, row in enumerate(records, start=2):
+        if row.get('code') == key and row.get('category') == cat:
+            row['row_index'] = idx
+            return row
+    return None

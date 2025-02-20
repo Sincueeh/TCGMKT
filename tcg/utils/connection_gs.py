@@ -43,3 +43,20 @@ def set_credentials_path() -> str:
     config_path = os.path.join(base_dir, 'config', 'config.json')
     return config_path
 
+def set_sheet(wks):
+    path = set_credentials_path()
+    with open(path) as file:
+        config = json.load(file)
+
+    scope = [config['scope']['feeds'],
+             config['scope']['api']]
+
+    client = authenticate_gs(path,scope)
+    spreadsheet = client.open(config['sheet']['source'])
+
+    if wks == 1:
+        worksheet = spreadsheet.worksheet(config['sheet']['cache'])
+    else:
+        worksheet =  spreadsheet.worksheet(config['sheet']['preview'])
+
+    return worksheet

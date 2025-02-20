@@ -2,7 +2,7 @@ from tcg.services.search import search_card
 
 def test_search_card():
     cat = 'Pokemon'
-    key = "Charizard"
+    key = "Venusaur"
 
     result = search_card(cat, key)
 
