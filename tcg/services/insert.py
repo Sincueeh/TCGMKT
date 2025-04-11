@@ -28,6 +28,5 @@ def save_cache(cat, key, df):
 
         return dict(status=200, message='Success')
     except Exception as e:
-        print(f'Failed: {e}')
         return dict(status=500, message=f'Failed {e}')
 
