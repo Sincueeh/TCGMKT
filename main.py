@@ -1,6 +1,5 @@
 import json
 import pandas as pd
-from tcg.services.insert import insert_values
 from tcg.services.retrieve import get_sheets
 from tcg.services.search import search_card, search_in_cache
 from functions_framework import http
@@ -22,22 +21,22 @@ def get(req):
             data_cache = json.loads(json_str)
             df = pd.DataFrame(data_cache)
             # Actualiza la hoja en caso de ser necesario y obtiene el resultado de la operación
-            result = insert_values(df)
-
+#            result = insert_values(df)
+            result = {}
             count = len(df)
             cards = df.to_dict(orient='records')
 
             # Se añade el recuento al mensaje y se incluye el diccionario de resultados
-            result['message'] = result.get('message', '') + f" Found {count} card{'s' if count != 1 else ''}."
+            result['message'] = f" Found {count} card{'s' if count != 1 else ''}."
             result['cards'] = cards
         else:
             # Si no hay registro en caché, se realiza la búsqueda en vivo
             result = search_card(category=data.get('category'), key=data.get('code'))
             # Suponiendo que search_card retorna un diccionario con una clave 'data'
-            if 'data' in result and result['data'] is not None:
-                cards = result['data']
+            if result['status'] == 200:
+                cards = result['message']
                 count = len(cards) if isinstance(cards, list) else 1
-                result['message'] = result.get('message', '') + f" Found {count} card{'s' if count != 1 else ''}."
+                result['message'] = f" Found {count} card{'s' if count != 1 else ''}."
                 result['cards'] = cards
             else:
                 result['cards'] = []

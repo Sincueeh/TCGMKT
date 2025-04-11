@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from tcg.services.insert import insert_values, save_cache
+from tcg.services.insert import save_cache
 from tcg.services.scrap import html_scrap
 from tcg.utils.connection_gs import set_sheet
 from typing import Union
@@ -24,9 +24,14 @@ def search_card(category, key):
         if len(df.values.tolist()) == 0:
             return dict(status=404,
                         message='No Results')
-        response = insert_values(df)
-        save_cache(category,key,df.to_dict(orient='records'))
-        return response
+        else:
+            response = save_cache(category,key,df.to_dict(orient='records'))
+            if response['status'] == 200:
+                return dict(status=response['status'],
+                            message=df.to_dict(orient='records'))
+            else:
+                return dict(status=response['status'],
+                            message=response['message'])
     except requests.RequestException as re:
         return dict(status=500,
                     message=f'Unreachable. {re}')

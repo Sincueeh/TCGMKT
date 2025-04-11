@@ -15,13 +15,19 @@ def insert_values(df):
 
 def save_cache(cat, key, df):
 
-    worksheet = set_sheet(1)
-    fecha_actual = datetime.datetime.now()
-    new_row = [
-        cat,
-        key,
-        json.dumps(df),
-        fecha_actual.strftime('%Y%m%d')
-    ]
-    worksheet.append_row(new_row)
+    try:
+        worksheet = set_sheet(1)
+        fecha_actual = datetime.datetime.now()
+        new_row = [
+            cat,
+            key,
+            json.dumps(df),
+            fecha_actual.strftime('%Y%m%d')
+        ]
+        worksheet.append_row(new_row)
+
+        return dict(status=200, message='Success')
+    except Exception as e:
+        print(f'Failed: {e}')
+        return dict(status=500, message=f'Failed {e}')
 
