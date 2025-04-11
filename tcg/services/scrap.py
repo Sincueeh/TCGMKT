@@ -1,8 +1,6 @@
-import datetime
-import json
 import uuid
 import pandas
-from tcg.utils.connection_gs import set_sheet
+
 
 
 def html_scrap(category, html):
