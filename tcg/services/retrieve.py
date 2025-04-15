@@ -11,15 +11,15 @@ with open(CREDENTIALS_PATH) as file:
 
 SCOPES= [config['scope']['feeds'], config['scope']['api']]
 SHEET= config['sheet']['source']
-PREVIEW= config['sheet']['preview']
+CACHE= config['sheet']['cache']
 
 def get_sheets():
 
-    creds = Credentials.from_service_account_file(config)
+    creds = Credentials.from_service_account_info(config)
     scoped_creds = creds.with_scopes(SCOPES)
     client = gspread.authorize(scoped_creds)
     spreadsheet = client.open(SHEET)
-    worksheet = spreadsheet.worksheet(PREVIEW)
+    worksheet = spreadsheet.worksheet(CACHE)
 
     return worksheet
 

@@ -1,9 +1,8 @@
-import main
+from tcg.services.retrieve import get_sheets
 
 def test_get_result():
-    req = {}
-    result = main.get_results(req)
+    worksheet = get_sheets()
 
-    print(result)
+    print(worksheet.get_all_records())
 
 test_get_result()
